@@ -1,0 +1,9 @@
+{
+	"Start": "This bot is based on Theklas [Mystagogue](https://wintermohn.de/roman/die-mystagoge/).\nClick the button below to continue",
+	"StartAdmin": "\n\nAdmin commands:\n- There is nothing yet...",
+	"StartLanguage": "\n\nLanguage can be chanced with a click on the Button 'Current language: EN'",
+	"de": "Aktuelle Sprache: DE",
+	"en": "Current language: EN",
+	"fr": "Langue actuelle: FR",
+	"JoinMystagoge": "Enter the Mystagogue"
+}
