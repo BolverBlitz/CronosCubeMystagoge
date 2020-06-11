@@ -1,6 +1,6 @@
 {
   "name": "mystagoge",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "https://wintermohn.de/roman/die-mystagoge/",
   "main": "Mystagoge.js",
   "dependencies": {
@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node Mystagoge.js"
   },
   "keywords": [
     "Telegram",
