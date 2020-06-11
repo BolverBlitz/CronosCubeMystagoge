@@ -130,7 +130,7 @@ bot.on(['/start', '/help'], (msg) => {
 	
 	Nachricht = Nachricht + i18n(LanguageForFunktion, "StartLanguage")
 
-	Nachricht = Nachricht + "Verfügbare Sprachen:\n" + languageDetail(i18n.languages)
+	Nachricht = Nachricht + "\nVerfügbare Sprachen:" + languageDetail(i18n.languages)
     
 	msg.reply.text(Nachricht, { parseMode: 'markdown', webPreview: false , replyMarkup}).catch(error => f.Elog('Error (/start send MSG):' + error.description));
 	bot.deleteMessage(msg.chat.id, msg.message_id).catch(error => f.Elog('Error (deleteMessage):' + error.description));
@@ -263,7 +263,6 @@ bot.on('callbackQuery', (msg) => {
 						]);
 
 						let Nachricht = i18n(data[2], CountChar(data[3])[0][0])
-						console.log(res)
 						bot.editMessageText(
 							{chatId: chatId, messageId: messageId}, Nachricht,
 							{parseMode: 'markdown', replyMarkup}
