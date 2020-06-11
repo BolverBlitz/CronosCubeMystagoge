@@ -6,6 +6,7 @@ var secret = require('./secret');
 //Include some Funktions
 const f = require('./src/Funktions');
 const OS = require('./src/Hardware');
+const UDP = require('./src/UDPBrodcast')
 
 //Include some modules
 
@@ -186,6 +187,10 @@ bot.on('callbackQuery', (msg) => {
 				{parseMode: 'markdown', replyMarkup}
 			).catch(error => f.Elog('Error (EditMSG):' + error.description));
 
+			if(lang[position] === "en"){
+				UDP.SendUDP("x")
+			}
+
 		};
 
 		if(data[0] === 'M')
@@ -269,6 +274,10 @@ bot.on('callbackQuery', (msg) => {
 						).catch(error => f.Elog('Error (EditMSG):' + error.description));
 					}
 				}
+			}
+
+			if(data[2] === "en"){
+				UDP.SendUDP("x")
 			}
 		}
 	}else{
