@@ -2,6 +2,8 @@
 A telegram bot that helps you to pick a class in the book Cronos Cube  
 Ein Telegram Bot der dir hilft, deine Klasse zu finden.
 
+[![Crowdin](https://badges.crowdin.net/cronoscube-mystagoge/localized.svg)](https://crowdin.com/project/cronoscube-mystagoge)
+
 Offizieller Bot: `@Mystagoge_bot`
 
 ## Commands
