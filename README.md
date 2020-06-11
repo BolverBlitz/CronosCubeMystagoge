@@ -7,7 +7,7 @@ Offizieller Bot: `@Mystagoge_bot`
 ## Commands
 ### User commands
 /start - User overview
-You can adjust the language there if the automatically selected one doesn't suit you
+You can adjust the language there if the automatically selected one doesn't suit you  
 /alive - Sends botstatus, uptime and response time
 
 ### Admin commands
