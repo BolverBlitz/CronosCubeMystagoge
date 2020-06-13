@@ -208,7 +208,7 @@ bot.on('callbackQuery', (msg) => {
 					]
 				]);
 				bot.editMessageText(
-					{chatId: chatId, messageId: messageId}, i18n(data[1], '0Frage'),
+					{chatId: chatId, messageId: messageId}, i18n(data[2], '0Frage'),
 					{parseMode: 'markdown', replyMarkup}
 				).catch(error => f.Elog('Error (EditMSG):' + error.description));
 			}else{
