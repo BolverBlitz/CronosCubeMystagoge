@@ -8,7 +8,7 @@ const f = require('./src/Funktions');
 const OS = require('./src/Hardware');
 
 //Include some modules
-
+const ping = require('ping');
 const newI18n = require("new-i18n");
 const i18n = newI18n(__dirname + "/languages", ["de","en"], config.fallbacklanguage);
 
@@ -80,20 +80,22 @@ function languageDetail(object){
 /*---------------------- Telegram Commands --------------------------*/
 
 bot.on(/^\/alive$/i, (msg) => {
-	let timediff = Date.now()/1000 - msg.date;
+	let timediff = Date.now() - msg.date*1000;
 	OS.Hardware.then(function(Hardware) {
 		let Output = "";
 		Output = Output + '\n- CPU: ' + Hardware.cpubrand + ' ' + Hardware.cpucores + 'x' + Hardware.cpuspeed + ' Ghz';
 		Output = Output + '\n- Load: ' + f.Round2Dec(Hardware.load);
 		Output = Output + '%\n- Memory Total: ' + f.Round2Dec(Hardware.memorytotal/1073741824) + ' GB'
 		Output = Output + '\n- Memory Free: ' + f.Round2Dec(Hardware.memoryfree/1073741824) + ' GB'
-			msg.reply.text(`Botname: ${config.botname}\nVersion: ${package.version}\nPing: ${Round2Dec(timediff)}ms\n\nUptime: ${f.uptime(Time_started)}\n\nSystem: ${Output}`).then(function(msg)
+		ping.promise.probe('api.telegram.org').then(function (ping) {
+			msg.reply.text(`Botname: ${config.botname}\nVersion: ${package.version}\nPing: ${ping.avg}ms\n\nUptime: ${f.uptime(Time_started)}\n\nSystem: ${Output}`).then(function(msg)
 			{
 				setTimeout(function(){
 				bot.deleteMessage(msg.chat.id,msg.message_id).catch(error => f.Elog('Error (deleteMessage):' + error.description));
 				}, config.WTdelmsglong);
             });
             bot.deleteMessage(msg.chat.id, msg.message_id).catch(error => f.Elog('Error (deleteMessage):' + error.description));
+		});
 	});
 });
 
@@ -185,7 +187,6 @@ bot.on('callbackQuery', (msg) => {
 				{chatId: chatId, messageId: messageId}, Nachricht,
 				{parseMode: 'markdown', replyMarkup}
 			).catch(error => f.Elog('Error (EditMSG):' + error.description));
-
 		};
 
 		if(data[0] === 'M')
